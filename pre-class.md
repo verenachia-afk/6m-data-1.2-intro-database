@@ -86,10 +86,10 @@ Find a physical receipt (grocery store, café, or online order) or imagine one. 
 
 | Data Item | Transaction or Master Record? |
 |---|---|
-| Date & Time | |
-| Store Address | |
-| Item Name (e.g., "Milk") | |
-| Item Price | *(Tricky — what happens if the price of milk changes next week?)* |
+| Date & Time |Transaction|
+| Store Address |Master Record |
+| Item Name (e.g., "Milk") |Master Record |
+| Item Price |Master Record *(Tricky — what happens if the price of milk changes next week?)* |
 
 *If attending live: bring your answers to class — we'll use them to kick off the E-Commerce activity.*
 *If self-studying: work through it yourself first, then check the answer key below.*
