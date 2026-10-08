@@ -89,6 +89,7 @@ Task:
 Paste the generated code for your Users table below. Try to read it, then open the answers below.
 
 * What does NOT NULL mean?
+  the column must be not null
 
 <details>
 <summary>Answer</summary>
@@ -111,6 +112,73 @@ Paste the generated code for your Users table below. Try to read it, then open t
 
 ## **✅ Solution Key (Don't peek until you try\!)**
 <details>
+
+Attempt
+```
+
+CREATE TABLE `customer` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `name` varchar(255),
+  `address` varchar(255)
+);
+
+CREATE TABLE `address` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `customer_id` int,
+  `street` varchar(255),
+  `city` varchar(255),
+  `type` varchar(255)
+);
+
+CREATE TABLE `restaurants` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `name` varchar(255),
+  `cuisince` varchar(255),
+  `rating` decimal
+);
+
+CREATE TABLE `menu_items` (
+  `id` int,
+  `restaurants_id` int,
+  `name` varchar(255),
+  `price_at_purchase` decimal
+);
+
+CREATE TABLE `drivers` (
+  `id` int,
+  `name` int,
+  `vehicle` varchar(255)
+);
+
+CREATE TABLE `order` (
+  `id` int,
+  `customer_id` int NOT NULL,
+  `drivers_id` int NOT NULL,
+  `restaurants_id` int NOT NULL,
+  `total_price` decimal
+);
+
+CREATE TABLE `order_details` (
+  `id` int,
+  `order_id` int NOT NULL,
+  `menu_id` int NOT NULL,
+  `quantity` int NOT NULL
+);
+
+ALTER TABLE `address` ADD FOREIGN KEY (`id`) REFERENCES `customer` (`address`);
+
+ALTER TABLE `menu_items` ADD FOREIGN KEY (`restaurants_id`) REFERENCES `restaurants` (`id`);
+
+ALTER TABLE `order` ADD FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`);
+
+ALTER TABLE `order` ADD FOREIGN KEY (`drivers_id`) REFERENCES `drivers` (`id`);
+
+ALTER TABLE `order` ADD FOREIGN KEY (`restaurants_id`) REFERENCES `restaurants` (`id`);
+
+ALTER TABLE `order_details` ADD FOREIGN KEY (`order_id`) REFERENCES `order` (`id`);
+
+ALTER TABLE `order_details` ADD FOREIGN KEY (`menu_id`) REFERENCES `menu_items` (`id`);
+```
 
   <summary>DBML Code Solution</summary>
   
